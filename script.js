@@ -10,8 +10,6 @@ const eatSound = document.getElementById("eatSound");
 const crashSound = document.getElementById("crashSound");
 
 const box = 20;
-const canvasSize = 400;
-
 let snake = [];
 let food = {};
 let direction = "RIGHT";
@@ -20,15 +18,26 @@ let gameInterval = null;
 let speed = 150;
 let paused = false;
 
+// 調整 canvas 大小
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight - 200; // 預留標題+按鈕高度
+}
+
+// 重新生成食物
 function spawnFood() {
+  const cols = Math.floor(canvas.width / box);
+  const rows = Math.floor(canvas.height / box);
   return {
-    x: Math.floor(Math.random() * (canvasSize / box)) * box,
-    y: Math.floor(Math.random() * (canvasSize / box)) * box,
+    x: Math.floor(Math.random() * cols) * box,
+    y: Math.floor(Math.random() * rows) * box,
   };
 }
 
 function resetGameState() {
-  snake = [{ x: 160, y: 200 }];
+  const startX = Math.floor((canvas.width / 2) / box) * box;
+  const startY = Math.floor((canvas.height / 2) / box) * box;
+  snake = [{ x: startX, y: startY }];
   direction = "RIGHT";
   food = spawnFood();
   score = 0;
@@ -40,7 +49,7 @@ function resetGameState() {
 function drawGame() {
   if (paused) return;
 
-  ctx.clearRect(0, 0, canvasSize, canvasSize);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   // 畫蛇
   snake.forEach((s, i) => {
@@ -61,8 +70,8 @@ function drawGame() {
 
   // 撞牆或自己
   if (
-    head.x < 0 || head.x >= canvasSize ||
-    head.y < 0 || head.y >= canvasSize ||
+    head.x < 0 || head.x >= canvas.width ||
+    head.y < 0 || head.y >= canvas.height ||
     snake.some(s => s.x === head.x && s.y === head.y)
   ) {
     crashSound.play();
@@ -93,6 +102,7 @@ function drawGame() {
 }
 
 function startGame() {
+  resizeCanvas();
   resetGameState();
   startBtn.style.display = "none";
   restartBtn.style.display = "none";
@@ -141,3 +151,7 @@ window.addEventListener("keydown", e => {
     e.preventDefault();
   }
 });
+
+// 視窗尺寸變化時重新調整
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
