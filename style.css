@@ -1,0 +1,49 @@
+body {
+  text-align: center;
+  background-color: #111;
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+#gameCanvas {
+  background-color: #000;
+  border: 3px solid #fff;
+  margin-top: 20px;
+}
+
+.controls {
+  margin-top: 15px;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 1.1em;
+  border: none;
+  border-radius: 6px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#restartBtn {
+  background-color: #28a745;
+}
+
+#restartBtn:hover {
+  background-color: #218838;
+}
+
+#pauseBtn {
+  background-color: #ffc107;
+  color: #000;
+}
+
+#pauseBtn:hover {
+  background-color: #e0a800;
+}
