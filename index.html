@@ -1,0 +1,24 @@
+<!<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>進階貪食蛇遊戲</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>🐍 進階貪食蛇遊戲</h1>
+  <canvas id="gameCanvas" width="400" height="400"></canvas>
+  <p id="score">分數：0</p>
+
+  <div class="controls">
+    <button id="startBtn">▶️ 開始遊戲</button>
+    <button id="pauseBtn" style="display: none;">⏸️ 暫停</button>
+    <button id="restartBtn" style="display: none;">🔁 重玩</button>
+  </div>
+
+  <audio id="eatSound" src="eat.mp3" preload="auto"></audio>
+  <audio id="crashSound" src="crash.mp3" preload="auto"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
