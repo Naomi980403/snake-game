@@ -1,18 +1,31 @@
-body {
-  text-align: center;
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
   background-color: #111;
   color: #fff;
   font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  margin: 10px;
 }
 
 #gameCanvas {
   background-color: #000;
   border: 3px solid #fff;
-  margin-top: 20px;
+  display: block;
+  flex-grow: 1;
+  width: 100%;
+  height: calc(100vh - 200px); /* 減掉標題、按鈕區 */
 }
 
 .controls {
-  margin-top: 15px;
+  margin: 10px 0;
 }
 
 button {
